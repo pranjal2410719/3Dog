@@ -1,9 +1,16 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo , useRef } from 'react'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import * as THREE from 'three'
 import { useThree } from '@react-three/fiber'
 import { OrbitControls, useGLTF, useTexture, useAnimations } from '@react-three/drei'
 
 const Dog = () => {
+  gsap.registerPlugin(useGSAP())
+  gsap.registerPlugin(ScrollTrigger)
+
+
   const model = useGLTF('/models/dog.drc.glb')
 
   const [normalMap, colorMap, branchNormalMap, branchMap] = useTexture([
@@ -68,6 +75,33 @@ const Dog = () => {
       }
     })
   }, [model, textures])
+
+
+  const dogModel = useRef(model)
+
+  useGSAP(()=>{
+
+    const tl = gsap.timeline({
+      scrollTrigger:{
+        trigger : "#section-1",
+        endTrigger : "#section-3",
+        start : "top top",
+        end : "bottom bottom",
+        scrub : 1,
+        markers : true,
+      }
+    })
+
+    tl.to(dogModel.current.scene.position , {
+      z : "-=0.5",
+      y : "-=0.2",
+      ease : "none",
+    }, 0)
+    .to(dogModel.current.scene.rotation , {
+      x : "+=0.2",
+    })
+
+  },[])
 
   return (
     <>
