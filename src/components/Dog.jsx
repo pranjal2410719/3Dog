@@ -30,7 +30,7 @@ const Dog = () => {
   colorMap.colorSpace = THREE.SRGBColorSpace
 
   useThree(({ camera, gl }) => {
-    camera.position.set(0, 0.6, 2)
+    camera.position.set(0, 0.2, 0.1)
 
     gl.toneMapping = THREE.ACESFilmicToneMapping
     gl.toneMappingExposure = 1.2
@@ -73,8 +73,8 @@ const Dog = () => {
     <>
       <primitive
         object={model.scene}
-        position={[0, -0.45, 0]}
-        rotation={[-0.3, 0.7, 0]}
+        position={[0.2, -0.6, 0]}
+        rotation={[-1, 0.7, 0.1]}
         scale={1}
       />
 
