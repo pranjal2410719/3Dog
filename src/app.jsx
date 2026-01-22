@@ -1,6 +1,6 @@
 import React from 'react'
 import Dog from './components/Dog'
-import './app.css'
+import './App.css'
 import { Canvas } from '@react-three/fiber'
 import { RiMenu3Line } from 'react-icons/ri'
 
