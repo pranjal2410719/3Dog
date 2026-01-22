@@ -88,7 +88,7 @@ const Dog = () => {
         start : "top top",
         end : "bottom bottom",
         scrub : 1,
-        markers : true,
+        // markers : true,
       }
     })
 
@@ -105,8 +105,8 @@ const Dog = () => {
       x : "+=0.3",
     },"third")
     .to(dogModel.current.scene.position , {
-      x : "-=1.2",
-      z : "+=0.8",
+      x : "-=0.6",
+      z : "+=0.4",
     },"third")
 
   },[])
