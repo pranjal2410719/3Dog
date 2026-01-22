@@ -22,12 +22,32 @@ section {
     z-index: 2;
 }
 
+
+#canvas-elem::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: -1;
+    transition: all 0.1s linear;
+}
+
+main:has(#section-2 .titl:hover) #canvas-elem::after{
+    background-image: url(/background-m.png);
+    background-size: cover;
+    
+}
+
 #section-1 {
     nav {
         display: flex;
         color: whitesmoke;
         padding: 10px;
         justify-content: space-between;
+        align-items: center;
 
         .nav-elm {
             padding: 10px;
@@ -40,8 +60,7 @@ section {
         }
 
         h2 {
-            font-size: 34px;
-            font: optional;
+            font-size: clamp(1.5rem, 4vw, 2rem);
         }
     }
 
@@ -60,8 +79,8 @@ section {
             text-align: right;
         }
 
-        h1{
-            font-size: 4rem;
+        h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
             color: whitesmoke;
             line-height: 0.8;
             margin: 0;
@@ -76,23 +95,146 @@ section {
             padding-left: 20px;
         }
     }
+
     .bottom {
         display: flex;
-            .left {
+
+        .left {
             flex: 1;
         }
+
         .right {
             flex: 1;
             display: flex;
             padding-top: 10px;
             color: whitesmoke;
-            gap: 5rem;;
+            gap: 5rem;
 
             p {
-                font-size: 18px;
+                font-size: clamp(14px, 3vw, 18px);
                 line-height: 1.5;
             }
         }
     }
+}
 
+#section-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
+    .titles {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-left: 100px;
+        width: 100%;
+        align-items: flex-start;
+
+        .titl {
+            display: flex;
+            flex-direction: column;
+            opacity: 0.2;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0.5rem;
+            text-align: left;
+            transition: all 0.3s linear;
+
+            small {
+                font-size: clamp(0.6rem, 2vw, 0.8rem);
+                color: rgba(255, 255, 255, 0.6);
+                font-weight: 300;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+
+            h1 {
+                font-size: clamp(1.5rem, 6vw, 3rem);
+                color: whitesmoke;
+                line-height: 1;
+                margin: 0;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: -0.02em;
+            }
+        }
+
+        .titl:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #section-1 {
+        nav {
+            padding: 0.5rem;
+
+            .nav-elm {
+                padding: 0.5rem;
+            }
+
+            img {
+                height: 50px;
+            }
+        }
+
+        .mid {
+            padding-top: 100px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+            .right {
+                padding-left: 1rem;
+            }
+        }
+
+        .bottom {
+            padding: 1rem;
+
+            .right {
+                gap: 2rem;
+            }
+        }
+    }
+
+    #section-2 {
+        padding: 1rem;
+
+        .titles {
+            padding-left: 10px;
+            gap: 2rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #section-1 {
+        nav {
+            img {
+                height: 40px;
+            }
+        }
+
+        .mid {
+            padding-top: 80px;
+        }
+
+        .bottom {
+            .right {
+                gap: 1rem;
+            }
+        }
+    }
+
+    #section-2 {
+        .titles {
+            padding-left: 2px;
+            gap: 1.5rem;
+        }
+    }
 }
