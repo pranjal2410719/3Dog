@@ -93,13 +93,21 @@ const Dog = () => {
     })
 
     tl.to(dogModel.current.scene.position , {
-      z : "-=0.5",
-      y : "-=0.2",
+      z : "-=0.7",
+      y : "-=0.5",
       ease : "none",
     }, 0)
     .to(dogModel.current.scene.rotation , {
       x : "+=0.2",
     })
+    .to (dogModel.current.scene.rotation , {
+      y : `+=${Math.PI+0.5}`,
+      x : "+=0.3",
+    },"third")
+    .to(dogModel.current.scene.position , {
+      x : "-=1.2",
+      z : "+=0.8",
+    },"third")
 
   },[])
 

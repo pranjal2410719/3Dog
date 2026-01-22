@@ -19,3 +19,10 @@ section{
     position: relative;
     z-index: 2;
 }
+
+#section-1{
+    nav{
+        display : flex;
+        justify-content : space-between;
+    }
+}
